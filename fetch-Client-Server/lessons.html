@@ -113,7 +113,7 @@ let onlinestore = new Vue({
     created: function () {
  
         //fetch("http://localhost:3000/collections/lessons").then(
-        fetch("http://lesson-test-pipe-env.eba-pw4bjpfx.eu-west-2.elasticbeanstalk.com").then(
+        fetch("http://lesson-test-pipe-env.eba-pw4bjpfx.eu-west-2.elasticbeanstalk.com/collections/lessons").then(
             function (response) {
                 response.json().then(
                     function (json) {
