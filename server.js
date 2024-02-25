@@ -79,7 +79,7 @@ app.param('collectionName', function (req, res, next, collectionName) {
 });
 
 app.get('/', function(req, res, next){
-  res.send('Select a collection');
+  res.send('Select a collection, collection/lessons');
 });
 
 
