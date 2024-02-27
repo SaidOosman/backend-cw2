@@ -21,8 +21,14 @@
                 {{cartItemCount}}
                 Checkout:    
                 </button>
-        </button>   
+                <button @click="saveLessonToDB">
+                    <span class="fas fa-save"></span>
+                    Save a lesson to the DB
+
+                </button>
+  
         </header>
+    </div>
     <main>
    
     <!--Container for Search and sort-->
@@ -111,6 +117,8 @@ let onlinestore = new Vue({
         showProd: true,
 },
     created: function () {
+
+
  
         //fetch("http://localhost:3000/collections/lessons").then(
         fetch("http://lesson-test-pipe-env.eba-pw4bjpfx.eu-west-2.elasticbeanstalk.com/collections/lessons").then(
@@ -168,6 +176,37 @@ let onlinestore = new Vue({
                 }
             })
         },
+    },
+    saveLessonToDB(){
+        const newLesson = {
+            "id": 1010,
+            "lesson": "Farming",
+            "location": "Brazil",
+            "price": 90,
+            "image": "src/images/psychology.jpg",
+            "availableInventory":7,
+            "space": 4
+    }
+//set the url to your server and route
+//fetch("http://localhost:3000/collections/products", {
+        fetch("http://lesson-test-pipe-env.eba-pw4bjpfx.eu-west-2.elasticbeanstalk.com/collections/lessons", {
+            method: "POST", //set the HTTP method as "POST"
+            headers: {
+                "Content-Type": "application/json", //set the data type as JSON
+            },
+            body: JSON.stringify(newLesson) //need to stringify the JSON
+        }).then(
+            function (response) {
+                response.json().then(
+                    function (json) {
+                        alert("Success: " + json.acknowledged);
+                        console.log("Success: " + json.acknowledged);
+                        webstore.lessons.push(newLesson);
+                    }
+                )
+            }
+        );
+
     },
     computed: {
         cartItemCount(){
