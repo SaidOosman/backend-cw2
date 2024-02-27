@@ -47,7 +47,7 @@ const uri = dbPprefix + dbUsername + ":" + dbPwd + dbUrl + dbParams;
 const app = express();
 
 app.use(cors());
-app.get('/favicon.ico', (req,res, next) => res.status(204));
+app.get('/favicon.ico', (req,res, next) => res.status(443));
 
 app.set('json spaces', 3);
 // app.use(function(req, res, next) {
@@ -74,7 +74,7 @@ app.use(morgan("short"));
 app.use(express.json());
 
 var imagePath = path.resolve(__dirname, "images");
-app.use("src/image", express.static(imagePath));
+app.use("/images", express.static(imagePath));
 
 app.param('collectionName', function (req, res, next, collectionName) {
   req.collection = db.collection(collectionName);
