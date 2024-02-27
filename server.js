@@ -47,7 +47,6 @@ const uri = dbPprefix + dbUsername + ":" + dbPwd + dbUrl + dbParams;
 const app = express();
 
 app.use(cors());
-app.get('/favicon.ico', (req,res, next) => res.status(443));
 
 app.set('json spaces', 3);
 // app.use(function(req, res, next) {
