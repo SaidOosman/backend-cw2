@@ -74,8 +74,7 @@ app.use(morgan("short"));
 app.use(express.json());
 
 var imagePath = path.resolve(__dirname, "images");
-
-app.use("/image", express.static(imagePath));
+app.use("src/image", express.static(imagePath));
 
 app.param('collectionName', function (req, res, next, collectionName) {
   req.collection = db.collection(collectionName);
