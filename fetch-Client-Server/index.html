@@ -21,6 +21,9 @@
                 {{cartItemCount}}
                 Checkout:    
                 </button>
+                <button @click="saveLessonToDB">
+                    save lesson to DB
+                </button>
                 
             
   
@@ -29,13 +32,17 @@
    
     <!--Container for Search and sort-->
     <div v-if="showProd" class='container'>
+        <div class="search">
+            <h3>
+            Search: <input type="text" v-model="search" placeholder="Search Lessons/Location">
+            </h3>
+        </div>
         <div class="sorth">
             
     <!--price is chosen for sorting due to people generally filtering by this option the most-->
             Sort price :
             <button @click="ascending">Ascending</button>
             <button @click="descending">Descending</button>  
-            <button @click="saveLessonToDB">save a lesson</button>
         </div>
 
     <!--V-FOR is added-->        
